@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Документация API Просто Библия</title>
+        <link rel="stylesheet" href="css/custom.min.css">
+
+    </head>
+
+    <body>
+        <header class="back-color-accent-light pt-4 pb-4">
+            <div class="container">
+                <h1 class="mt-0 mb-0 text-color-white">Просто Библия API. Документация</h1>
+            </div>
+        </header>
+
+        <div class="container">
+            <section class="section">
+                <h2>Получить текст книги Библии</h2>
+                <p class="mb-0">
+                    <b>Получить книгу Бытие целиком:</b>
+                <pre><code>https://justbible.ru/api/text?book=1</code></pre>
+                </p>
+                <p class="mb-0">
+                    <b>Получить книгу Откровение целиком:</b>
+                <pre><code>https://justbible.ru/api/text?book=66</code></pre>
+                </p>
+
+                <h2>Получить текст главы в книге Библии</h2>
+                <p class="mb-0">
+                    <b>Получить 1 главу книги Бытие:</b>
+                <pre><code>https://justbible.ru/api/text?book=1&chapter=1</code></pre>
+                </p>
+
+                <p class="mb-0">
+                    <b>Получить 22 главу книги Откровение:</b>
+                <pre><code>https://justbible.ru/api/text?book=66&chapter=22</code></pre>
+                </p>
+
+                <h2>Получить стихи из главы в книге Библии</h2>
+                <p class="mb-0">
+                    <b>Получить 3 стих 1 главу книги евангелия от Иоанна:</b>
+                <pre><code>https://justbible.ru/api/text?book=43&chapter=1&verse=3</code></pre>
+                </p>
+
+                <p class="mb-0">
+                    <b>Получить диапазон стихов 4-8, глава 13, книги 1 Коринфянам:</b>
+                <pre><code>https://justbible.ru/api/text?book=53&chapter=13&verse=4-8</code></pre>
+                </p>
+
+                <p class="mb-0">
+                    <b>Получить список стихов 1,3,14, глава 1 книга ев. от Иоанна:</b>
+                <pre><code>https://justbible.ru/api/text?book=43&chapter=1&verse=1,3,14</code></pre>
+                </p>
+
+                <h2>Изменить перевод</h2>
+                <p class="mb-0">
+                    <b>Синодальный перевод:</b>
+                <pre><code>https://justbible.ru/api/text?translation=rst&book=43&chapter=1&verse=3</code></pre>
+                </p>
+
+                <p class="mb-0">
+                    <b>Современный перевод РБО (по умолчанию, можно не указывать):</b>
+                <pre><code>https://justbible.ru/api/text?translation=rbo&book=43&chapter=1&verse=3</code></pre>
+                </p>
+
+                <p>
+                    <b>Параметры GET запроса к API</b><br>
+                    <code>https://justbible.ru/api/text</code>
+                </p>
+                <table class="mt-0 mb-4">
+                    <tbody>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Тип</th>
+                            <th>По умолчанию</th>
+                            <th>Комментарий</th>
+                        </tr>
+                        <tr>
+                            <td>translation</td>
+                            <td><code>string</code></td>
+                            <td><code>rbo</code></td>
+                            <td>
+                                <code>rbo</code> - современные превод РБО<br>
+                                <code>rbo</code> - синодальный перевод
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>book</td>
+                            <td><code>number<code></td>
+                            <td><code>1<code></td>
+                            <td>Порядковый номер книги в Библии с привычном Русcком Синодальном Переводе.<br> Диапазон чисел 1-66, где 1-39 - книги Ветхого Завета, с 40-66 книги Нового Завета</td>
+                        </tr>
+                        <tr>
+                            <td>chapter</td>
+                            <td><code>number<code></td>
+                            <td><code>1<code></td>
+                            <td>Номер главы выбранной книги, если указанного номера главы не существует вернется ошибка.</td>
+                        </tr>
+                        <tr>
+                            <td>verse</td>
+                            <td><code>number<code></td>
+                            <td><code>1<code></td>
+                            <td>Номер стиха выбранной главы в выбранной книге, если указанного номера стиха не существует вернется ошибка.</td>
+                        </tr>
+                        <tr>
+                            <td>type</td>
+                            <td><code>string</code></td>
+                            <td><code>json</code></td>
+                            <td><code>json</code> - вернется объект содержащий выбранные стихи, главы или книгу
+                                целиком. С указанными координатами.<br>
+                                <code>string</code> - вернется строка содержащая выбранные стихи, главы или книгу
+                                целиком. С указанными координатами.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Поиск слов по тексту в Библии (регистронезависимый)</h2>
+                <p class="mb-0">
+                    <b>Поиск слова любить:</b>
+                <pre><code>https://justbible.ru/api/search?search=любить</code></pre>
+                </p>
+                <p class="mb-0">
+                    <b>Поиск слова в синодальном переводе:</b>
+                <pre><code>https://justbible.ru/api/search?translation=rst&search=любить</code></pre>
+                </p>
+
+                <p>
+                    <b>Параметры GET запроса к API</b><br>
+                    <code>https://justbible.ru/api/search</code>
+                </p>
+                <table class="mt-0 mb-4">
+                    <tbody>
+                        <tr>
+                            <th>Параметр</th>
+                            <th>Тип</th>
+                            <th>По умолчанию</th>
+                            <th>Комментарий</th>
+                        </tr>
+                        <tr>
+                            <td>translation</td>
+                            <td><code>string</code></td>
+                            <td><code>rbo</code></td>
+                            <td>
+                                <code>rbo</code> - современные превод РБО<br>
+                                <code>rbo</code> - синодальный перевод
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>search</td>
+                            <td><code>string<code></td>
+                            <td><code>""<code></td>
+                            <td>Слово или фраза на русском языке для поиска по тексту Библии.<br>
+                                Поиск игнорирует регистр букв.<br>
+                                Минимальная длина строки 3 символа
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h2>Получение случайного отрывка из Библии</h2>
+                <p class="mb-0">
+                    <b>Случайный отрывок из современного перевода:</b>
+                    <pre><code>https://justbible.ru/api/rnd</code></pre>
+                                </p>
+                                <p class="mb-0">
+                                    <b>Случайный отрывок из синодального перевода:</b>
+                                <pre><code>https://justbible.ru/api/rnd?translation=rst</code></pre>
+                                </p>
+
+                                <p>
+                                    <b>Параметры GET запроса к API</b><br>
+                                    <code>https://justbible.ru/api/rnd</code>
+                                </p>
+                                <table class="mt-0 mb-4">
+                                    <tbody>
+                                        <tr>
+                                            <th>Параметр</th>
+                                            <th>Тип</th>
+                                            <th>По умолчанию</th>
+                                            <th>Комментарий</th>
+                                        </tr>
+                                        <tr>
+                                            <td>translation</td>
+                                            <td><code>string</code></td>
+                                            <td><code>rbo</code></td>
+                                            <td>
+                                                <code>rbo</code> - современные превод РБО<br>
+                                                <code>rbo</code> - синодальный перевод
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+
+
+            </section>
+        </div>
+        <footer class="back-color-gray pt-4 pb-4">
+            <div class="container">
+                <span class="text-color-white">Просто Библия API</span>
+            </div>
+        </footer>
+    </body>
+
+</html>
