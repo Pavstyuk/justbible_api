@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Документация API Просто Библия</title>
+        <title>Просто Библия API</title>
         <link rel="stylesheet" href="css/custom.min.css">
 
     </head>
@@ -12,13 +12,13 @@
     <body>
         <header class="back-color-accent-light pt-4 pb-4">
             <div class="container">
-                <h1 class="mt-0 mb-0 text-color-white">Просто Библия API. Документация</h1>
+                <h1 class="mt-0 mb-0 text-color-white">Просто Библия API</h1>
             </div>
         </header>
 
         <div class="container">
             <section class="section">
-                <h2>Получить текст книги Библии</h2>
+                <h2>Получить полный текст книги Библии</h2>
                 <p class="mb-0">
                     <b>Получить книгу Бытие целиком:</b>
                 <pre><code>https://justbible.ru/api/text?book=1</code></pre>
@@ -66,6 +66,11 @@
                 <pre><code>https://justbible.ru/api/text?translation=rbo&book=43&chapter=1&verse=3</code></pre>
                 </p>
 
+                <p class="mb-0">
+                    <b>Перевод New American Standart Bible (NASB):</b>
+                <pre><code>https://justbible.ru/api/text?translation=nasb&book=1&chapter=1&verse=1</code></pre>
+                </p>
+
                 <p>
                     <b>Параметры GET запроса к API</b><br>
                     <code>https://justbible.ru/api/text</code>
@@ -83,8 +88,9 @@
                             <td><code>string</code></td>
                             <td><code>rbo</code></td>
                             <td>
-                                <code>rbo</code> - современные превод РБО<br>
-                                <code>rbo</code> - синодальный перевод
+                                <code>rbo</code> - современные русский превод РБО<br>
+                                <code>rst</code> - синодальный русский перевод<br>
+                                <code>nasb</code> - современный английский перевод NASB
                             </td>
                         </tr>
                         <tr>
@@ -106,69 +112,66 @@
                             <td>Номер стиха выбранной главы в выбранной книге, если указанного номера стиха не существует вернется ошибка.</td>
                         </tr>
                         <tr>
-                            <td>type</td>
-                            <td><code>string</code></td>
-                            <td><code>json</code></td>
-                            <td><code>json</code> - вернется объект содержащий выбранные стихи, главы или книгу
-                                целиком. С указанными координатами.<br>
-                                <code>string</code> - вернется строка содержащая выбранные стихи, главы или книгу
-                                целиком. С указанными координатами.
-                            </td>
+                            <td>info</td>
+                            <td><code>boolean<code></td>
+                            <td><code>false<code></td>
+                            <td>Добаляет к ответу объект с координатами полученных стихов</td>
                         </tr>
                     </tbody>
                 </table>
 
                 <h2>Поиск слов по тексту в Библии (регистронезависимый)</h2>
                 <p class="mb-0">
-                    <b>Поиск слова любить:</b>
-                <pre><code>https://justbible.ru/api/search?search=любить</code></pre>
-                </p>
-                <p class="mb-0">
-                    <b>Поиск слова в синодальном переводе:</b>
-                <pre><code>https://justbible.ru/api/search?translation=rst&search=любить</code></pre>
-                </p>
+                    <b>Поиск слова "любить":</b>
+                    <pre><code>https://justbible.ru/api/search?search=любить</code></pre>
+                                </p>
+                                <p class="mb-0">
+                                    <b>Поиск слова в синодальном переводе:</b>
+                                <pre><code>https://justbible.ru/api/search?translation=rst&search=любить</code></pre>
+                                </p>
 
-                <p>
-                    <b>Параметры GET запроса к API</b><br>
-                    <code>https://justbible.ru/api/search</code>
-                </p>
-                <table class="mt-0 mb-4">
-                    <tbody>
-                        <tr>
-                            <th>Параметр</th>
-                            <th>Тип</th>
-                            <th>По умолчанию</th>
-                            <th>Комментарий</th>
-                        </tr>
-                        <tr>
-                            <td>translation</td>
-                            <td><code>string</code></td>
-                            <td><code>rbo</code></td>
-                            <td>
-                                <code>rbo</code> - современные превод РБО<br>
-                                <code>rbo</code> - синодальный перевод
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>search</td>
-                            <td><code>string<code></td>
-                            <td><code>""<code></td>
-                            <td>Слово или фраза на русском языке для поиска по тексту Библии.<br>
-                                Поиск игнорирует регистр букв.<br>
-                                Минимальная длина строки 3 символа
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <h2>Получение случайного отрывка из Библии</h2>
-                <p class="mb-0">
-                    <b>Случайный отрывок из современного перевода:</b>
-                    <pre><code>https://justbible.ru/api/rnd</code></pre>
+                                <p>
+                                    <b>Параметры GET запроса к API</b><br>
+                                    <code>https://justbible.ru/api/search</code>
+                                </p>
+                                <table class="mt-0 mb-4">
+                                    <tbody>
+                                        <tr>
+                                            <th>Параметр</th>
+                                            <th>Тип</th>
+                                            <th>По умолчанию</th>
+                                            <th>Комментарий</th>
+                                        </tr>
+                                        <tr>
+                                            <td>translation</td>
+                                            <td><code>string</code></td>
+                                            <td><code>rbo</code></td>
+                                            <td>
+                                                <code>rbo</code> - современные русский превод РБО<br>
+                                                <code>rst</code> - синодальный русский перевод<br>
+                                                <code>nasb</code> - современный английский перевод NASB
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>search</td>
+                                            <td><code>string<code></td>
+                                            <td><code>""</code></td>
+                                            <td>Слово или фраза на русском языке для поиска по тексту Библии.<br>
+                                                Поиск игнорирует регистр букв.<br>
+                                                Минимальная длина строки 3 символа
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h2>Получение случайного отрывка из Библии</h2>
+                                <p class="mb-0">
+                                    <b>Случайный отрывок из современного перевода:</b>
+                                <pre><code>https://justbible.ru/api/rnd</code></pre>
                                 </p>
                                 <p class="mb-0">
                                     <b>Случайный отрывок из синодального перевода:</b>
-                                <pre><code>https://justbible.ru/api/rnd?translation=rst</code></pre>
+                                <pre><code>https://justbible.ru/api/rnd?translation=rst&type=string</code></pre>
                                 </p>
 
                                 <p>
@@ -188,8 +191,19 @@
                                             <td><code>string</code></td>
                                             <td><code>rbo</code></td>
                                             <td>
-                                                <code>rbo</code> - современные превод РБО<br>
-                                                <code>rbo</code> - синодальный перевод
+                                                <code>rbo</code> - современные русский превод РБО<br>
+                                                <code>rst</code> - синодальный русский перевод<br>
+                                                <code>nasb</code> - современный английский перевод NASB
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>type</td>
+                                            <td><code>string</code></td>
+                                            <td><code>json</code></td>
+                                            <td><code>json</code> - вернется объект содержащий случайный
+                                                стих и информацию с координатами<br>
+                                                <code>string</code> - вернется строка содержащая
+                                                случайный стих и информацию с координатами
                                             </td>
                                         </tr>
                                     </tbody>
