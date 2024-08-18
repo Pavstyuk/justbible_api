@@ -50,11 +50,7 @@
 
     https://justbible.ru/api/text?translation=nasb&book=1&chapter=1&verse=1
 
-<<<<<<< HEAD
 **Параметры GET запроса к API**
-=======
-**Параметры GET запроса к API**  
->>>>>>> 6a29d26da92886ffc1a7bfa7d33e9b8dddbb53a6
 `https://justbible.ru/api/text`
 
 | Параметр     | Тип       | По умолчанию | Комментарий                                   |
@@ -148,11 +144,8 @@
 
     https://justbible.ru/api/search?translation=rst&search=любить
 
-<<<<<<< HEAD
+
 **Параметры GET запроса к API**
-=======
-**Параметры GET запроса к API**  
->>>>>>> 6a29d26da92886ffc1a7bfa7d33e9b8dddbb53a6
 `https://justbible.ru/api/search`
 
 | Параметр     | Тип       | По умолчанию | Комментарий                                   |
@@ -171,11 +164,7 @@
 
     https://justbible.ru/api/rnd?translation=rst&type=string
 
-<<<<<<< HEAD
 **Параметры GET запроса к API**
-=======
-**Параметры GET запроса к API**  
->>>>>>> 6a29d26da92886ffc1a7bfa7d33e9b8dddbb53a6
 `https://justbible.ru/api/rnd`
 
 | Параметр     | Тип       | По умолчанию | Комментарий                                   |
